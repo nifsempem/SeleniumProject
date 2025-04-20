@@ -59,3 +59,4 @@ Feature: Basketball England Supporter Registration
       | browser  |
       | chrome   |
       | firefox  |
+
