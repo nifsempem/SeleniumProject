@@ -45,7 +45,7 @@ public class UserRegistrationDefinition {
         Assert.assertEquals(expectedDob, actualDob);
     }
 
-    public void setupWait() {
+    private void setupWait() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -55,32 +55,32 @@ public class UserRegistrationDefinition {
 
     @When("I enter correct user details")
     public void enter_valid_user_details() {
-        driver.findElement(By.id("member_firstname")).sendKeys("John");
-        driver.findElement(By.id("member_lastname")).sendKeys("Doe");
-        driver.findElement(By.id("member_emailaddress")).sendKeys("john@test.com");
-        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("john@test.com");
+        driver.findElement(By.id("member_firstname")).sendKeys("Nifemi");
+        driver.findElement(By.id("member_lastname")).sendKeys("Adebayo");
+        driver.findElement(By.id("member_emailaddress")).sendKeys("Nifemi@test.com");
+        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("Nifemi@test.com");
         driver.findElement(By.id("signupunlicenced_password")).sendKeys("Test@1234");
         driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys("Test@1234");
     }
 
     @When("I enter details with missing last name")
     public void enter_details_missing_last_name() {
-        driver.findElement(By.id("member_firstname")).sendKeys("John");
+        driver.findElement(By.id("member_firstname")).sendKeys("Nifemi");
         driver.findElement(By.id("member_lastname")).sendKeys("");
-        driver.findElement(By.id("member_emailaddress")).sendKeys("john@test.com");
-        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("john@test.com");
+        driver.findElement(By.id("member_emailaddress")).sendKeys("Nifemi@test.com");
+        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("Nifemi@test.com");
         driver.findElement(By.id("signupunlicenced_password")).sendKeys("Test@1234");
         driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys("Test@1234");
     }
 
     @When("I enter mismatched passwords")
     public void enter_mismatched_passwords() {
-        driver.findElement(By.id("member_firstname")).sendKeys("John");
-        driver.findElement(By.id("member_lastname")).sendKeys("Doe");
-        driver.findElement(By.id("member_emailaddress")).sendKeys("john@test.com");
-        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("john@test.com");
+        driver.findElement(By.id("member_firstname")).sendKeys("Nifemi");
+        driver.findElement(By.id("member_lastname")).sendKeys("Adebayo");
+        driver.findElement(By.id("member_emailaddress")).sendKeys("Nifemi@test.com");
+        driver.findElement(By.id("member_confirmemailaddress")).sendKeys("Nifemi@test.com");
         driver.findElement(By.id("signupunlicenced_password")).sendKeys("Test@1234");
-        driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys("Test@1234");
+        driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys("Missmatched@1234");
     }
 
     @When("I accept the account confirmation terms and conditions")
@@ -122,8 +122,8 @@ public class UserRegistrationDefinition {
 
     @Then("The user should be registered successfully")
     public void verify_successful_registration() {
-        waitForElement(By.className("confirmation-message"));  // Adjust to actual success message element
-        Assert.assertTrue(driver.getPageSource().contains("Thank you")); // Adjust as needed
+        waitForElement(By.className("confirmation-message"));
+        Assert.assertTrue(driver.getPageSource().contains("Thank you"));
         driver.quit();
     }
 

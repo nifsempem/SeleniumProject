@@ -9,7 +9,7 @@ Feature: Basketball England Supporter Registration
     And I accept the code of ethics terms and conditions
     And I accept age responsibility terms and conditions
     And I submit the form
-   #Then The user should be registered successfully
+    #Then The user should be registered successfully
 
   Scenario: Last name is missing
     Given I open the registration page
