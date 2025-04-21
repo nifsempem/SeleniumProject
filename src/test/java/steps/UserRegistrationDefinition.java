@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
+import java.util.Objects;
 
 public class UserRegistrationDefinition {
     WebDriver driver;
@@ -41,9 +42,10 @@ public class UserRegistrationDefinition {
     @Then("The DOB field should contain {string}")
     public void verify_dob_field_value(String expectedDob) {
         WebElement dobField = driver.findElement(By.id("dp"));
-        String actualDob = dobField.getAttribute("value").trim();
+        String actualDob = Objects.requireNonNull(dobField.getDomProperty("value")).trim();
         Assert.assertEquals(expectedDob, actualDob);
     }
+
 
     private void setupWait() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -123,7 +125,7 @@ public class UserRegistrationDefinition {
     @Then("The user should be registered successfully")
     public void verify_successful_registration() {
         waitForElement(By.className("confirmation-message"));
-        Assert.assertTrue(driver.getPageSource().contains("Thank you"));
+        Assert.assertTrue(Objects.requireNonNull(driver.getPageSource()).contains("Thank you"));
         driver.quit();
     }
 
