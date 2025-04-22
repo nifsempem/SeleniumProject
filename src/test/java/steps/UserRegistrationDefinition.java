@@ -132,7 +132,7 @@ public class UserRegistrationDefinition {
     @Then("An error message for last name should be displayed")
     public void verify_last_name_error() {
         waitForElement(By.cssSelector(".field-validation-error.warning[data-valmsg-for='Surname']"));
-        String error = driver.findElement(By.cssSelector(".field-validation-error.warning[data-valmsg-for='Surname']Last Name is required")).getText();
+        String error = driver.findElement(By.cssSelector("span[for='member_lastname']")).getText();
         Assert.assertTrue(error.contains("Last Name is required"));
         driver.quit();
     }
@@ -147,9 +147,9 @@ public class UserRegistrationDefinition {
 
     @Then("An error message for terms and conditions should be displayed")
     public void verify_terms_error() {
-        waitForElement(By.cssSelector("span[for='TermsAccept']"));
+        waitForElement(By.cssSelector(" span[for='TermsAccept']"));
         String error = driver.findElement(By.cssSelector("span[for='TermsAccept']")).getText();
-        Assert.assertTrue(error.contains("You must confirm that you are over 18 or a person with parental responsibility"));
+        Assert.assertTrue(error.contains("You must confirm that you have read and accepted our Terms and Conditions"));
         driver.quit();
     }
 }
